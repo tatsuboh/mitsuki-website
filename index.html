@@ -1,650 +1,1270 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>美月 - ボディとハートの癒やし | もみほぐし・占い相談</title>
-  <meta name="description" content="美月は、もみほぐしと占い相談であなたの心と身体を癒やすサロンです。">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: "Noto Serif JP", "Hiragino Mincho Pro", serif;
-    }
-    .font-maru {
-      font-family: "Zen Maru Gothic", sans-serif;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(192, 132, 252, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(192, 132, 252, 0.6); }
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-    @keyframes bubbleFloat {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-    }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
-    .animate-glow { animation: glow 3s ease-in-out infinite; }
-    .animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(192,132,252,0.2) 100%);
-      border: 1px solid rgba(255,255,255,0.3);
-      animation: bubbleFloat linear infinite;
-    }
-    .text-gradient {
-      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-500 { animation-delay: 0.5s; }
-    .delay-600 { animation-delay: 0.6s; }
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
-<body class="bg-purple-50">
-
-  <!-- Navigation -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
-    <div class="max-w-6xl mx-auto px-6 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="logo.jpg" alt="美月ロゴ" class="w-12 h-12 rounded-full object-cover shadow-lg">
-          <div>
-            <h1 class="text-xl font-medium tracking-wider text-white nav-text">美月</h1>
-            <p class="text-xs tracking-widest text-purple-200 nav-subtext">MITSUKI</p>
-          </div>
-        </div>
-        
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#home" class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link">ホーム</a>
-          <a href="#services" class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link">サービス</a>
-          <a href="#about" class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link">当店について</a>
-          <a href="#access" class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link">アクセス</a>
-          <a href="#contact" class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link">ご予約</a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button id="menuBtn" class="md:hidden text-white p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div id="mobileMenu" class="md:hidden hidden mt-4 py-4 border-t border-purple-700">
-        <a href="#home" class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors">ホーム</a>
-        <a href="#services" class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors">サービス</a>
-        <a href="#about" class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors">当店について</a>
-        <a href="#access" class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors">アクセス</a>
-        <a href="#contact" class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors">ご予約</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-purple-400 via-fuchsia-300 to-pink-200"></div>
-    
-    <!-- Overlay for depth -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20"></div>
-    
-    <!-- Floating Bubbles -->
-    <div class="bubble" style="left: 5%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s;"></div>
-    <div class="bubble" style="left: 15%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 1s;"></div>
-    <div class="bubble" style="left: 25%; width: 18px; height: 18px; animation-duration: 11s; animation-delay: 2s;"></div>
-    <div class="bubble" style="left: 35%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 0.5s;"></div>
-    <div class="bubble" style="left: 45%; width: 22px; height: 22px; animation-duration: 13s; animation-delay: 1.5s;"></div>
-    <div class="bubble" style="left: 55%; width: 28px; height: 28px; animation-duration: 16s; animation-delay: 2.5s;"></div>
-    <div class="bubble" style="left: 65%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: 3s;"></div>
-    <div class="bubble" style="left: 75%; width: 32px; height: 32px; animation-duration: 17s; animation-delay: 0.8s;"></div>
-    <div class="bubble" style="left: 85%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 1.8s;"></div>
-    <div class="bubble" style="left: 92%; width: 24px; height: 24px; animation-duration: 14s; animation-delay: 2.8s;"></div>
-    
-    <!-- Decorative Elements -->
-    <div class="absolute top-32 left-20 w-40 h-40 rounded-full bg-white/20 blur-3xl animate-float"></div>
-    <div class="absolute bottom-40 right-16 w-56 h-56 rounded-full bg-pink-300/30 blur-3xl animate-float" style="animation-delay: 3s;"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-      <!-- Logo -->
-      <div class="flex justify-center mb-8 animate-fadeInUp">
-        <div class="relative">
-          <img src="logo.jpg" alt="美月ロゴ" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-2xl animate-glow">
-        </div>
-      </div>
-      
-      <p class="text-purple-800 text-lg md:text-xl tracking-widest mb-4 animate-fadeInUp delay-200 font-maru">
-        ボディとハートの癒やし
-      </p>
-      
-      <h2 class="text-5xl md:text-7xl text-purple-900 font-light tracking-wider mb-2 animate-fadeInUp delay-300">
-        美月
-      </h2>
-      
-      <p class="text-purple-600 text-lg tracking-widest mb-8 animate-fadeInUp delay-400">
-        MITSUKI
-      </p>
-      
-      <p class="text-purple-700/80 max-w-xl mx-auto leading-relaxed mb-12 animate-fadeInUp delay-500 font-maru">
-        もみほぐしと占いで<br>
-        あなたの心と身体に安らぎをお届けします
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-600">
-        <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full tracking-wider hover:from-purple-500 hover:to-pink-400 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 hover:scale-105">
-          ご予約はこちら
-        </a>
-        <a href="#services" class="px-8 py-4 border-2 border-purple-400 text-purple-700 rounded-full tracking-wider hover:border-pink-400 hover:text-pink-600 hover:bg-white/50 transition-all duration-300">
-          サービス詳細
-        </a>
-      </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-purple-500 rounded-full flex justify-center pt-2">
-        <div class="w-1 h-2 bg-pink-500 rounded-full"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-24 bg-white relative overflow-hidden">
-    <!-- Decorative background -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-pink-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
-    
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <p class="text-pink-500 text-sm tracking-widest mb-2">SERVICES</p>
-        <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-4">サービス案内</h3>
-        <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Massage Service -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-purple-100">
-          <div class="h-48 bg-gradient-to-br from-purple-400 via-fuchsia-400 to-pink-400 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-2 mx-auto backdrop-blur-sm">
-                  <span class="text-4xl">💆‍♀️</span>
-                </div>
-                <p class="text-white/90 text-sm tracking-widest">BODY CARE</p>
-              </div>
-            </div>
-            <!-- Floating elements -->
-            <div class="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-full animate-float"></div>
-            <div class="absolute bottom-8 right-8 w-6 h-6 bg-white/20 rounded-full animate-float" style="animation-delay: 1s;"></div>
-          </div>
-          <div class="p-8">
-            <h4 class="text-2xl text-purple-900 mb-4 tracking-wide">もみほぐし</h4>
-            <p class="text-purple-700/80 leading-relaxed mb-6 font-maru">
-              熟練の手技で、肩こり・腰痛・疲労回復をサポート。
-              あなたの身体の声に耳を傾け、
-              芯からほぐれる心地よさをお届けします。
-            </p>
-            <div class="space-y-3 border-t border-purple-200 pt-6">
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">30分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥3,500</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">60分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥6,000</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">90分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥8,500</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Fortune Telling Service -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-purple-100">
-          <div class="h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-fuchsia-500 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-2 mx-auto backdrop-blur-sm">
-                  <span class="text-4xl">🔮</span>
-                </div>
-                <p class="text-white/90 text-sm tracking-widest">HEART CARE</p>
-              </div>
-            </div>
-            <!-- Stars -->
-            <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 15%; left: 20%;"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 30%; left: 80%; animation-delay: 0.5s;"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 60%; left: 15%; animation-delay: 1s;"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 75%; left: 70%; animation-delay: 1.5s;"></div>
-            <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 45%; left: 90%; animation-delay: 0.8s;"></div>
-          </div>
-          <div class="p-8">
-            <h4 class="text-2xl text-purple-900 mb-4 tracking-wide">占い相談</h4>
-            <p class="text-purple-700/80 leading-relaxed mb-6 font-maru">
-              四柱推命・タロット・手相など、
-              多様な占術であなたの運勢を読み解きます。
-              恋愛・仕事・人生の悩みに寄り添います。
-            </p>
-            <div class="space-y-3 border-t border-purple-200 pt-6">
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">20分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥3,000</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">40分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥5,500</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-purple-600">60分コース</span>
-                <span class="text-pink-600 font-medium text-lg">¥8,000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Special Combo -->
-      <div class="mt-12 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-500 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
-        <!-- Decorative elements -->
-        <div class="absolute top-4 left-8 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
-        <div class="absolute bottom-4 right-12 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-        
-        <div class="relative z-10">
-          <p class="text-pink-200 text-sm tracking-widest mb-2">✨ SPECIAL SET ✨</p>
-          <h4 class="text-2xl text-white mb-4 tracking-wide">ボディ＆ハート 癒やしセット</h4>
-          <p class="text-purple-100 mb-4 font-maru">
-            もみほぐし60分 + 占い相談30分
-          </p>
-          <div class="flex items-center justify-center gap-4 flex-wrap">
-            <span class="text-purple-200 line-through">¥10,500</span>
-            <span class="text-4xl text-white font-medium">¥9,000</span>
-            <span class="bg-white text-pink-600 text-sm px-3 py-1 rounded-full font-medium">15%OFF</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-24 bg-gradient-to-br from-purple-100 via-pink-100 to-fuchsia-100 relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-pink-600 text-sm tracking-widest mb-2">ABOUT US</p>
-          <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-6">当店について</h3>
-          <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mb-8 rounded-full"></div>
-          
-          <p class="text-purple-800/80 leading-loose mb-6 font-maru">
-            「美月」は、日々の喧騒から離れ、
-            心と身体の調和を取り戻すための癒やしの空間です。
-          </p>
-          <p class="text-purple-800/80 leading-loose mb-6 font-maru">
-            ボディケアで身体の疲れを癒し、
-            占いであなたの心に寄り添います。
-            「ボディとハートの癒やし」をコンセプトに、
-            トータルでサポートいたします。
-          </p>
-          <p class="text-purple-800/80 leading-loose font-maru">
-            月の光のようにやさしく、
-            あなたを包み込む空間でお待ちしております。
-          </p>
-          
-          <div class="mt-8 grid grid-cols-3 gap-4">
-            <div class="text-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
-              <p class="text-3xl text-gradient font-bold mb-2">10</p>
-              <p class="text-purple-600 text-sm">年以上の実績</p>
-            </div>
-            <div class="text-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
-              <p class="text-3xl text-gradient font-bold mb-2">5,000</p>
-              <p class="text-purple-600 text-sm">人以上の施術</p>
-            </div>
-            <div class="text-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
-              <p class="text-3xl text-gradient font-bold mb-2">98</p>
-              <p class="text-purple-600 text-sm">%満足度</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative">
-          <div class="aspect-square bg-white/40 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl p-8">
-            <div class="w-full h-full flex items-center justify-center relative bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl">
-              <!-- Logo image -->
-              <img src="logo.jpg" alt="美月ロゴ" class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-xl">
-            </div>
-          </div>
-          
-          <!-- Floating decorations -->
-          <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full blur-2xl opacity-60"></div>
-          <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-pink-300 to-purple-300 rounded-full blur-2xl opacity-60"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Access Section -->
-  <section id="access" class="py-24 bg-white relative">
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-16">
-        <p class="text-pink-500 text-sm tracking-widest mb-2">ACCESS</p>
-        <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-4">アクセス</h3>
-        <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl shadow-lg border border-purple-100">
-          <h4 class="text-xl text-purple-900 mb-6 pb-4 border-b border-purple-200">店舗情報</h4>
-          
-          <div class="space-y-5 font-maru">
-            <div class="flex items-start gap-4">
-              <span class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-              </span>
-              <div>
-                <p class="text-purple-700">〒XXX-XXXX</p>
-                <p class="text-purple-700">○○県○○市○○町1-2-3</p>
-                <p class="text-purple-700">○○ビル 2F</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4">
-              <span class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </span>
-              <div>
-                <p class="text-purple-700">営業時間: 10:00 - 21:00</p>
-                <p class="text-purple-700">最終受付: 20:00</p>
-                <p class="text-purple-500 text-sm mt-1">※定休日：毎週水曜日</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4">
-              <span class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                </svg>
-              </span>
-              <div>
-                <p class="text-purple-700">TEL: 00-0000-0000</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4">
-              <span class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </span>
-              <div>
-                <p class="text-purple-700">○○駅より徒歩5分</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Map Placeholder -->
-        <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl overflow-hidden shadow-lg min-h-80 border border-purple-200">
-          <div class="w-full h-full flex items-center justify-center">
-            <div class="text-center p-8">
-              <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
-                </svg>
-              </div>
-              <p class="text-purple-700 font-maru">
-                Google Map を表示
-              </p>
-              <p class="text-purple-500 text-sm mt-2">
-                ※実際のサイトではここに地図が表示されます
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      美月 - ボディとハートの癒やし | もみほぐし・色彩セラピー・タロット
+    </title>
+    <meta
+      name="description"
+      content="美月は、もみほぐしと色彩セラピー・タロットであなたの心と身体を癒やすサロンです。大阪府泉佐野市。"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Noto Serif JP', 'Hiragino Mincho Pro', serif;
+      }
+      .font-maru {
+        font-family: 'Zen Maru Gothic', sans-serif;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(192, 132, 252, 0.6);
+        }
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+      @keyframes bubbleFloat {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1);
+          opacity: 0;
+        }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      .animate-glow {
+        animation: glow 3s ease-in-out infinite;
+      }
+      .animate-twinkle {
+        animation: twinkle 2s ease-in-out infinite;
+      }
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(192, 132, 252, 0.2) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        animation: bubbleFloat linear infinite;
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      .delay-600 {
+        animation-delay: 0.6s;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-purple-50">
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <img
+              src="logo.jpg"
+              alt="美月ロゴ"
+              class="w-12 h-12 rounded-full object-cover shadow-lg"
+            />
+            <div>
+              <h1
+                class="text-xl font-medium tracking-wider text-white nav-text"
+              >
+                美月
+              </h1>
+              <p class="text-xs tracking-widest text-purple-200 nav-subtext">
+                MITSUKI
               </p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 bg-gradient-to-b from-purple-900 via-fuchsia-900 to-pink-900 relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-10 w-56 h-56 bg-pink-500/20 rounded-full blur-3xl"></div>
-    
-    <!-- Stars -->
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 10%; left: 15%;"></div>
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 25%; left: 85%; animation-delay: 0.5s;"></div>
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 40%; left: 5%; animation-delay: 1s;"></div>
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 75%; left: 25%; animation-delay: 2s;"></div>
-    <div class="absolute w-1 h-1 bg-white rounded-full animate-twinkle" style="top: 85%; left: 70%; animation-delay: 2.5s;"></div>
-    
-    <div class="max-w-3xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-12">
-        <p class="text-pink-300 text-sm tracking-widest mb-2">RESERVATION</p>
-        <h3 class="text-3xl md:text-4xl text-white tracking-wider mb-4">ご予約・お問い合わせ</h3>
-        <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-6 rounded-full"></div>
-        <p class="text-purple-200 font-maru">
-          お電話またはフォームよりお気軽にご予約ください
-        </p>
-      </div>
-      
-      <!-- Phone Reservation -->
-      <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-8 rounded-3xl mb-8 text-center shadow-2xl">
-        <p class="text-pink-100 mb-2">お電話でのご予約</p>
-        <p class="text-4xl text-white tracking-wider mb-2">00-0000-0000</p>
-        <p class="text-pink-200 text-sm">受付時間: 10:00 - 20:00</p>
-      </div>
-      
-      <!-- Form -->
-      <div class="bg-white/10 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border border-white/20">
-        <p class="text-center text-purple-200 mb-8 font-maru">
-          オンライン予約フォーム
-        </p>
-        
-        <form class="space-y-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-purple-200 text-sm mb-2">お名前 *</label>
-              <input 
-                type="text" 
-                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all"
-                placeholder="山田 太郎"
-              >
-            </div>
-            <div>
-              <label class="block text-purple-200 text-sm mb-2">電話番号 *</label>
-              <input 
-                type="tel" 
-                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all"
-                placeholder="090-0000-0000"
-              >
-            </div>
-          </div>
-          
-          <div>
-            <label class="block text-purple-200 text-sm mb-2">メールアドレス *</label>
-            <input 
-              type="email" 
-              class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all"
-              placeholder="example@email.com"
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#home"
+              class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link"
             >
+              ホーム
+            </a>
+            <a
+              href="#services"
+              class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link"
+            >
+              メニュー
+            </a>
+            <a
+              href="#therapist"
+              class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link"
+            >
+              セラピスト
+            </a>
+            <a
+              href="#access"
+              class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link"
+            >
+              アクセス
+            </a>
+            <a
+              href="#contact"
+              class="text-sm tracking-wider transition-all duration-300 hover:text-pink-300 text-white/90 nav-link"
+            >
+              ご予約
+            </a>
           </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-purple-200 text-sm mb-2">ご希望日 *</label>
-              <input 
-                type="date" 
-                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all"
-              >
+
+          <!-- Mobile Menu Button -->
+          <button id="menuBtn" class="md:hidden text-white p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="md:hidden hidden mt-4 py-4 border-t border-purple-700"
+        >
+          <a
+            href="#home"
+            class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors"
+          >
+            ホーム
+          </a>
+          <a
+            href="#services"
+            class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors"
+          >
+            メニュー
+          </a>
+          <a
+            href="#therapist"
+            class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors"
+          >
+            セラピスト
+          </a>
+          <a
+            href="#access"
+            class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors"
+          >
+            アクセス
+          </a>
+          <a
+            href="#contact"
+            class="block w-full text-left py-2 text-purple-200 hover:text-pink-300 transition-colors"
+          >
+            ご予約
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-400 via-fuchsia-300 to-pink-200"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20"
+      ></div>
+
+      <!-- Floating Bubbles -->
+      <div
+        class="bubble"
+        style="left: 5%; width: 20px; height: 20px; animation-duration: 12s;"
+      ></div>
+      <div
+        class="bubble"
+        style="
+          left: 15%;
+          width: 30px;
+          height: 30px;
+          animation-duration: 15s;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          left: 25%;
+          width: 18px;
+          height: 18px;
+          animation-duration: 11s;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          left: 45%;
+          width: 22px;
+          height: 22px;
+          animation-duration: 13s;
+          animation-delay: 1.5s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          left: 65%;
+          width: 16px;
+          height: 16px;
+          animation-duration: 10s;
+          animation-delay: 3s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          left: 85%;
+          width: 20px;
+          height: 20px;
+          animation-duration: 12s;
+          animation-delay: 1.8s;
+        "
+      ></div>
+
+      <div
+        class="absolute top-32 left-20 w-40 h-40 rounded-full bg-white/20 blur-3xl animate-float"
+      ></div>
+      <div
+        class="absolute bottom-40 right-16 w-56 h-56 rounded-full bg-pink-300/30 blur-3xl animate-float"
+        style="animation-delay: 3s;"
+      ></div>
+
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div class="flex justify-center mb-8 animate-fadeInUp">
+          <img
+            src="logo.jpg"
+            alt="美月ロゴ"
+            class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-2xl animate-glow"
+          />
+        </div>
+
+        <p
+          class="text-purple-800 text-lg md:text-xl tracking-widest mb-4 animate-fadeInUp delay-200 font-maru"
+        >
+          ボディとハートの癒やし
+        </p>
+
+        <h2
+          class="text-5xl md:text-7xl text-purple-900 font-light tracking-wider mb-2 animate-fadeInUp delay-300"
+        >
+          美月
+        </h2>
+
+        <p
+          class="text-purple-600 text-lg tracking-widest mb-8 animate-fadeInUp delay-400"
+        >
+          MITSUKI
+        </p>
+
+        <p
+          class="text-purple-700/80 max-w-xl mx-auto leading-relaxed mb-12 animate-fadeInUp delay-500 font-maru"
+        >
+          色彩セラピーともみほぐしで
+          <br />
+          あなたの心と身体に安らぎをお届けします
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-600"
+        >
+          <a
+            href="#contact"
+            class="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full tracking-wider hover:from-purple-500 hover:to-pink-400 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 hover:scale-105"
+          >
+            ご予約はこちら
+          </a>
+          <a
+            href="#services"
+            class="px-8 py-4 border-2 border-purple-400 text-purple-700 rounded-full tracking-wider hover:border-pink-400 hover:text-pink-600 hover:bg-white/50 transition-all duration-300"
+          >
+            メニュー詳細
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <div
+          class="w-6 h-10 border-2 border-purple-500 rounded-full flex justify-center pt-2"
+        >
+          <div class="w-1 h-2 bg-pink-500 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section
+      class="py-20 bg-gradient-to-br from-purple-100 via-pink-50 to-fuchsia-100"
+    >
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="space-y-4 text-purple-800 font-maru text-lg leading-loose">
+          <p>
+            <span class="text-pink-600 font-medium">身体</span>
+            と
+            <span class="text-purple-600 font-medium">心</span>
+            は密接に結びついており
+          </p>
+          <p>
+            互いに
+            <span class="text-pink-600 font-medium">影響</span>
+            を与え合っています
+          </p>
+          <p>
+            <span class="text-purple-600 font-medium">ボディケア</span>
+            で身体をリフレッシュすれば
+          </p>
+          <p>
+            <span class="text-pink-600 font-medium">心の安定</span>
+            も得られ
+          </p>
+          <p>
+            <span class="text-purple-600 font-medium">ハートケア</span>
+            で心の悩みを解消すると
+          </p>
+          <p>
+            <span class="text-pink-600 font-medium">身体の調子</span>
+            も整います
+          </p>
+          <p>
+            <span class="text-purple-600 font-medium">両方</span>
+            を体験することで
+            <span class="text-pink-600 font-medium">深い癒やし</span>
+            が得られ
+          </p>
+          <p>
+            日常生活にも
+            <span class="text-pink-600 font-medium">良い影響</span>
+            がもたらされます
+          </p>
+          <p class="text-xl mt-6 text-purple-900 font-medium">
+            <span class="text-pink-600">心身の調和</span>
+            を取り戻しましょう
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white relative overflow-hidden">
+      <div
+        class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-80 h-80 bg-pink-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+          <p class="text-pink-500 text-sm tracking-widest mb-2">MENU</p>
+          <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-4">
+            メニュー
+          </h3>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <!-- Mitsuki Course -->
+        <div class="mb-16">
+          <div
+            class="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-500 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
+          >
+            <div
+              class="absolute top-4 left-8 w-16 h-16 bg-white/10 rounded-full blur-xl"
+            ></div>
+            <div
+              class="absolute bottom-4 right-12 w-20 h-20 bg-white/10 rounded-full blur-xl"
+            ></div>
+
+            <div class="relative z-10">
+              <div class="text-center mb-8">
+                <p class="text-pink-200 text-sm tracking-widest mb-2">
+                  ✨ RECOMMEND ✨
+                </p>
+                <h4 class="text-3xl md:text-4xl text-white mb-4 tracking-wide">
+                  美月コース
+                </h4>
+                <p class="text-purple-100 font-maru max-w-2xl mx-auto">
+                  色彩セラピーで心を整え　もみほぐしで身体に活力を
+                  <br />
+                  心と身体に癒やしをもたらします
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div
+                  class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20"
+                >
+                  <p class="text-3xl text-white font-medium mb-2">40分</p>
+                  <p class="text-4xl text-white font-bold mb-3">¥4,500</p>
+                  <p class="text-pink-200 text-sm font-maru">
+                    体験したい方、初めての方に
+                  </p>
+                </div>
+                <div
+                  class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20"
+                >
+                  <p class="text-3xl text-white font-medium mb-2">60分</p>
+                  <p class="text-4xl text-white font-bold mb-3">¥5,500</p>
+                  <p class="text-pink-200 text-sm font-maru">
+                    気軽に心身を整えたい方に
+                  </p>
+                </div>
+                <div
+                  class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20"
+                >
+                  <p class="text-3xl text-white font-medium mb-2">90分</p>
+                  <p class="text-4xl text-white font-bold mb-3">¥8,000</p>
+                  <p class="text-pink-200 text-sm font-maru">
+                    心身ともに疲れを感じている方に
+                  </p>
+                </div>
+              </div>
+
+              <div class="text-center space-y-2">
+                <p class="text-pink-100 font-maru">
+                  継続して受けていただくことで心身の調和を感じられます
+                </p>
+                <p
+                  class="text-white font-medium bg-white/20 inline-block px-6 py-2 rounded-full"
+                >
+                  🎁 ペアで受けていただくと お一人様500円引き
+                </p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Body & Heart Menu Grid -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Body Menu -->
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-xl overflow-hidden border border-purple-100"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-purple-400 via-fuchsia-400 to-pink-400 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                  <p class="text-white text-3xl font-medium tracking-wider">
+                    ボディメニュー
+                  </p>
+                  <p class="text-white/80 text-sm tracking-widest mt-2">
+                    BODY CARE
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-8">
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <h5 class="text-xl text-purple-900 mb-2">ボディ</h5>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  全身の緊張と特にお疲れの部分を重点的にほぐします
+                </p>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-purple-600">30分</span>
+                  <span class="text-pink-600 font-medium">¥2,000</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-purple-600">60分</span>
+                  <span class="text-pink-600 font-medium">¥4,000</span>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <h5 class="text-xl text-purple-900 mb-2">ヘッド</h5>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  頭や首や目の疲れに特化し、睡眠の質の向上も狙います
+                </p>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-purple-600">15分</span>
+                  <span class="text-pink-600 font-medium">¥1,500</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-purple-600">30分</span>
+                  <span class="text-pink-600 font-medium">¥2,500</span>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <h5 class="text-xl text-purple-900 mb-2">フェイス</h5>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  耳周り、顔全体をやさしくほぐし、血行促進させます
+                </p>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-purple-600">15分</span>
+                  <span class="text-pink-600 font-medium">¥1,500</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-purple-600">30分</span>
+                  <span class="text-pink-600 font-medium">¥2,500</span>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <h5 class="text-xl text-purple-900 mb-2">デコルテ</h5>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  脇のリンパをしっかり流し、腕の動きを軽やかに
+                </p>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-purple-600">15分</span>
+                  <span class="text-pink-600 font-medium">¥1,500</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-purple-600">30分</span>
+                  <span class="text-pink-600 font-medium">¥2,500</span>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <h5 class="text-xl text-purple-900 mb-2">フット</h5>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  足つぼや膝下をクリームを使い流し、軽やかな足取りに
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-purple-600">30分</span>
+                  <span class="text-pink-600 font-medium">¥3,000</span>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <p class="text-purple-600 font-maru">
+                  延長 10分毎
+                  <span class="text-pink-600 font-medium">¥1,000</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Heart Menu -->
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-xl overflow-hidden border border-purple-100"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-fuchsia-500 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                  <p class="text-white text-3xl font-medium tracking-wider">
+                    ハートメニュー
+                  </p>
+                  <p class="text-white/80 text-sm tracking-widest mt-2">
+                    HEART CARE
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                style="top: 15%; left: 20%;"
+              ></div>
+              <div
+                class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                style="top: 30%; left: 80%; animation-delay: 0.5s;"
+              ></div>
+              <div
+                class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                style="top: 60%; left: 15%; animation-delay: 1s;"
+              ></div>
+            </div>
+            <div class="p-8">
+              <p
+                class="text-purple-700 text-center mb-8 font-maru leading-relaxed text-sm"
+              >
+                現状を整理し、自分自身を見つめ直し
+                <br />
+                本当の願望と新たな可能性を見つけましょう
+                <br />
+                色彩の持つ力を使い、運気と癒やしをもたらし
+                <br />
+                あなたの理想とする未来へ近づくお手伝いをします
+              </p>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <div class="flex justify-between items-start mb-2">
+                  <h5 class="text-xl text-purple-900">色彩セラピー</h5>
+                  <div class="text-right">
+                    <span class="text-purple-600">30分</span>
+                    <span class="text-pink-600 font-medium ml-2">¥3,500</span>
+                  </div>
+                </div>
+                <div class="bg-pink-100/50 rounded-xl p-4 mt-3">
+                  <p class="text-purple-600 text-sm font-maru">
+                    不安やストレスを感じている
+                    <br />
+                    自分の感情がわからない
+                    <br />
+                    自分の気持ちを整理したい
+                    <br />
+                    <span class="text-pink-600">そんなときにおすすめです</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <div class="flex justify-between items-start mb-2">
+                  <h5 class="text-xl text-purple-900">霊感タロット</h5>
+                  <div class="text-right">
+                    <span class="text-purple-600">30分</span>
+                    <span class="text-pink-600 font-medium ml-2">¥3,500</span>
+                  </div>
+                </div>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  仕事、家庭、対人、さまざまな質問やお悩みに直感や霊的な感性でお答えします
+                </p>
+                <div class="bg-pink-100/50 rounded-xl p-4">
+                  <p class="text-purple-600 text-sm font-maru">
+                    決断に迷っている
+                    <br />
+                    方向性が見えない
+                    <br />
+                    未知の状況に戸惑っている
+                    <br />
+                    <span class="text-pink-600">そんなときにおすすめです</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="mb-6 pb-6 border-b border-purple-200">
+                <div class="flex justify-between items-start mb-2">
+                  <h5 class="text-xl text-purple-900">イロット</h5>
+                  <div class="text-right">
+                    <span class="text-purple-600">50分</span>
+                    <span class="text-pink-600 font-medium ml-2">¥6,000</span>
+                  </div>
+                </div>
+                <p class="text-purple-600 text-sm mb-3 font-maru">
+                  色彩とタロットからの叡智や霊的メッセージを通じ、自己理解を深めます
+                </p>
+                <div class="bg-pink-100/50 rounded-xl p-4">
+                  <p class="text-purple-600 text-sm font-maru">
+                    もっと自分を知りたい
+                    <br />
+                    もっと自分を好きになりたい
+                    <br />
+                    もっと素敵な自分になりたい
+                    <br />
+                    <span class="text-pink-600">そんなときにおすすめです</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <p class="text-purple-600 font-maru">
+                  延長 10分毎
+                  <span class="text-pink-600 font-medium">¥1,000</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <p class="text-purple-600 font-maru">※お支払いは現金のみとなります</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Therapist Section -->
+    <section
+      id="therapist"
+      class="py-24 bg-gradient-to-br from-purple-100 via-pink-100 to-fuchsia-100"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <p class="text-pink-600 text-sm tracking-widest mb-2">THERAPIST</p>
+          <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-4">
+            セラピスト紹介
+          </h3>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- しろ -->
+          <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+            <div class="text-center mb-6">
+              <div
+                class="w-32 h-32 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full mx-auto mb-4 flex items-center justify-center"
+              >
+                <span class="text-5xl">🔮</span>
+              </div>
+              <p class="text-pink-500 text-sm tracking-widest">HEART CARE</p>
+              <h4 class="text-2xl text-purple-900 mt-2">しろ</h4>
+              <p class="text-purple-600 text-sm">桑原 思侶真</p>
+            </div>
+
+            <div
+              class="text-purple-700 font-maru leading-relaxed space-y-4 text-sm"
+            >
+              <p>
+                占いの館で多様なお悩みに向き合ってきた経験を活かし、愛と導きの霊感鑑定師として、出張鑑定やイベント出演、個人講座などで幅広く活動しています。
+              </p>
+              <p>
+                さらなる高みを求め、色彩セラピーと複数の占術を融合させた独自の鑑定方法「イロット」を生み出しました。
+              </p>
+              <p>
+                直感や霊的な感性を活かした鑑定で、あなたが心の奥深くにある声に気づき、自分自身に向き合う力を引き出します。
+              </p>
+              <div class="bg-purple-100/50 rounded-xl p-4 mt-4">
+                <p class="text-purple-800 font-medium mb-2">私の鑑定の目的は</p>
+                <p>
+                  あなたが自分自身に素直になり、深く理解し、自分を信じ、素敵な自分に気付くこと。そして、愛する自分へと導くことです。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- パープル -->
+          <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+            <div class="text-center mb-6">
+              <div
+                class="w-32 h-32 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full mx-auto mb-4 flex items-center justify-center"
+              >
+                <span class="text-5xl">💆‍♀️</span>
+              </div>
+              <p class="text-pink-500 text-sm tracking-widest">BODY CARE</p>
+              <h4 class="text-2xl text-purple-900 mt-2">パープル</h4>
+              <p class="text-purple-600 text-sm">紫藤 パープル</p>
+            </div>
+
+            <div
+              class="text-purple-700 font-maru leading-relaxed space-y-4 text-sm"
+            >
+              <p>
+                身体の声に寄り添い、心身を整えるボディセラピストとして、サロン施術、イベント出展、出張施術などを中心に活動しています。
+              </p>
+              <p>
+                長年のリラクゼーションサロンでの経験を活かし、熟練の技術で身体のコリと緊張を巧みにほぐします。多くのお客様から高い評価をいただいており、遠方からいらっしゃる方も多数います。
+              </p>
+              <p>
+                私が得意とするロングコース施術では、じっくりと身体を整えることで、深いリラクゼーションを体験していただけます。
+              </p>
+              <div class="bg-purple-100/50 rounded-xl p-4 mt-4">
+                <p class="text-purple-800 font-medium mb-2">私の施術の目的は</p>
+                <p>
+                  疲れが抜けない感覚を解消し、身体が重いと感じる日々を軽やかにし、気持ちが沈みやすい状態からの脱却を手助けすることです。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <p class="text-pink-500 text-sm tracking-widest mb-2">ACCESS</p>
+          <h3 class="text-3xl md:text-4xl text-purple-900 tracking-wider mb-4">
+            アクセス
+          </h3>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl shadow-lg border border-purple-100"
+          >
+            <h4
+              class="text-xl text-purple-900 mb-6 pb-4 border-b border-purple-200"
+            >
+              店舗情報
+            </h4>
+
+            <div class="space-y-5 font-maru">
+              <div class="flex items-start gap-4">
+                <span
+                  class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-purple-700">〒598-0071</p>
+                  <p class="text-purple-700">大阪府泉佐野市佐野台7-1</p>
+                  <p class="text-purple-700">府営佐野台住宅集会所</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span
+                  class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-purple-700">営業日: 祝日を除く毎週月曜日</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span
+                  class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white flex-shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-purple-700">営業時間: 10:30 - 16:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Map -->
+          <div
+            class="rounded-3xl overflow-hidden shadow-lg border border-purple-200 min-h-80"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.0!2d135.323!3d34.409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000b0b5a9ae1b7d%3A0x0!2z5aSn6Ziq5bqc5rOJ5L2Q6YeO5biC5L2Q6YeO5Y-w77yX77yN77yR!5e0!3m2!1sja!2sjp!4v1"
+              width="100%"
+              height="100%"
+              style="border: 0; min-height: 320px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-24 bg-gradient-to-b from-purple-900 via-fuchsia-900 to-pink-900 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-20 left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-20 right-10 w-56 h-56 bg-pink-500/20 rounded-full blur-3xl"
+      ></div>
+
+      <div
+        class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+        style="top: 10%; left: 15%;"
+      ></div>
+      <div
+        class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+        style="top: 25%; left: 85%; animation-delay: 0.5s;"
+      ></div>
+      <div
+        class="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+        style="top: 75%; left: 25%; animation-delay: 2s;"
+      ></div>
+
+      <div class="max-w-3xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-12">
+          <p class="text-pink-300 text-sm tracking-widest mb-2">RESERVATION</p>
+          <h3 class="text-3xl md:text-4xl text-white tracking-wider mb-4">
+            ご予約・お問い合わせ
+          </h3>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-6 rounded-full"
+          ></div>
+          <p class="text-purple-200 font-maru">
+            フォームよりお気軽にご予約ください
+          </p>
+        </div>
+
+        <!-- Form -->
+        <div
+          class="bg-white/10 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border border-white/20"
+        >
+          <form
+            class="space-y-6"
+            name="reservation"
+            method="POST"
+            data-netlify="true"
+          >
+            <input type="hidden" name="form-name" value="reservation" />
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-purple-200 text-sm mb-2">
+                  お名前 *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none transition-all"
+                  placeholder="山田 太郎"
+                />
+              </div>
+              <div>
+                <label class="block text-purple-200 text-sm mb-2">
+                  電話番号 *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none transition-all"
+                  placeholder="090-0000-0000"
+                />
+              </div>
+            </div>
+
             <div>
-              <label class="block text-purple-200 text-sm mb-2">ご希望時間 *</label>
-              <select class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all">
+              <label class="block text-purple-200 text-sm mb-2">
+                メールアドレス *
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none transition-all"
+                placeholder="example@email.com"
+              />
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-purple-200 text-sm mb-2">
+                  ご希望日 *
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none transition-all"
+                />
+              </div>
+              <div>
+                <label class="block text-purple-200 text-sm mb-2">
+                  ご希望時間 *
+                </label>
+                <select
+                  name="time"
+                  required
+                  class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none transition-all"
+                >
+                  <option value="" class="bg-purple-900">
+                    選択してください
+                  </option>
+                  <option value="10:30" class="bg-purple-900">10:30</option>
+                  <option value="11:00" class="bg-purple-900">11:00</option>
+                  <option value="11:30" class="bg-purple-900">11:30</option>
+                  <option value="12:00" class="bg-purple-900">12:00</option>
+                  <option value="13:00" class="bg-purple-900">13:00</option>
+                  <option value="14:00" class="bg-purple-900">14:00</option>
+                  <option value="15:00" class="bg-purple-900">15:00</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-purple-200 text-sm mb-2">
+                ご希望メニュー *
+              </label>
+              <select
+                name="menu"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none transition-all"
+              >
                 <option value="" class="bg-purple-900">選択してください</option>
-                <option value="10:00" class="bg-purple-900">10:00</option>
-                <option value="11:00" class="bg-purple-900">11:00</option>
-                <option value="12:00" class="bg-purple-900">12:00</option>
-                <option value="13:00" class="bg-purple-900">13:00</option>
-                <option value="14:00" class="bg-purple-900">14:00</option>
-                <option value="15:00" class="bg-purple-900">15:00</option>
-                <option value="16:00" class="bg-purple-900">16:00</option>
-                <option value="17:00" class="bg-purple-900">17:00</option>
-                <option value="18:00" class="bg-purple-900">18:00</option>
-                <option value="19:00" class="bg-purple-900">19:00</option>
-                <option value="20:00" class="bg-purple-900">20:00</option>
+                <optgroup label="美月コース" class="bg-purple-900">
+                  <option value="mitsuki-40" class="bg-purple-900">
+                    美月コース 40分 ¥4,500
+                  </option>
+                  <option value="mitsuki-60" class="bg-purple-900">
+                    美月コース 60分 ¥5,500
+                  </option>
+                  <option value="mitsuki-90" class="bg-purple-900">
+                    美月コース 90分 ¥8,000
+                  </option>
+                </optgroup>
+                <optgroup label="ボディメニュー" class="bg-purple-900">
+                  <option value="body-30" class="bg-purple-900">
+                    ボディ 30分 ¥2,000
+                  </option>
+                  <option value="body-60" class="bg-purple-900">
+                    ボディ 60分 ¥4,000
+                  </option>
+                  <option value="head-15" class="bg-purple-900">
+                    ヘッド 15分 ¥1,500
+                  </option>
+                  <option value="head-30" class="bg-purple-900">
+                    ヘッド 30分 ¥2,500
+                  </option>
+                  <option value="foot-30" class="bg-purple-900">
+                    フット 30分 ¥3,000
+                  </option>
+                </optgroup>
+                <optgroup label="ハートメニュー" class="bg-purple-900">
+                  <option value="color-30" class="bg-purple-900">
+                    色彩セラピー 30分 ¥3,500
+                  </option>
+                  <option value="tarot-30" class="bg-purple-900">
+                    霊感タロット 30分 ¥3,500
+                  </option>
+                  <option value="irot-50" class="bg-purple-900">
+                    イロット 50分 ¥6,000
+                  </option>
+                </optgroup>
               </select>
             </div>
-          </div>
-          
-          <div>
-            <label class="block text-purple-200 text-sm mb-2">ご希望メニュー *</label>
-            <select class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all">
-              <option value="" class="bg-purple-900">選択してください</option>
-              <option value="massage-30" class="bg-purple-900">もみほぐし 30分 ¥3,500</option>
-              <option value="massage-60" class="bg-purple-900">もみほぐし 60分 ¥6,000</option>
-              <option value="massage-90" class="bg-purple-900">もみほぐし 90分 ¥8,500</option>
-              <option value="fortune-20" class="bg-purple-900">占い相談 20分 ¥3,000</option>
-              <option value="fortune-40" class="bg-purple-900">占い相談 40分 ¥5,500</option>
-              <option value="fortune-60" class="bg-purple-900">占い相談 60分 ¥8,000</option>
-              <option value="set" class="bg-purple-900">ボディ＆ハート癒やしセット ¥9,000</option>
-            </select>
-          </div>
-          
-          <div>
-            <label class="block text-purple-200 text-sm mb-2">備考・ご要望</label>
-            <textarea 
-              rows="4"
-              class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400/20 transition-all resize-none"
-              placeholder="ご質問やご要望がございましたらご記入ください"
-            ></textarea>
-          </div>
-          
-          <button 
-            type="submit"
-            class="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl tracking-wider hover:from-pink-400 hover:to-purple-400 transition-all duration-300 shadow-lg hover:shadow-pink-500/30 hover:scale-[1.02] font-medium"
-          >
-            予約を送信する
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="bg-purple-950 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="flex items-center gap-3">
-          <img src="logo.jpg" alt="美月ロゴ" class="w-12 h-12 rounded-full object-cover shadow-lg">
-          <div>
-            <h1 class="text-lg text-pink-100 tracking-wider">美月</h1>
-            <p class="text-xs text-purple-400">ボディとハートの癒やし</p>
-          </div>
-        </div>
-        
-        <div class="flex gap-8 text-purple-300 text-sm font-maru">
-          <a href="#home" class="hover:text-pink-300 transition-colors">ホーム</a>
-          <a href="#services" class="hover:text-pink-300 transition-colors">サービス</a>
-          <a href="#about" class="hover:text-pink-300 transition-colors">当店について</a>
-          <a href="#access" class="hover:text-pink-300 transition-colors">アクセス</a>
+            <div>
+              <label class="block text-purple-200 text-sm mb-2">
+                備考・ご要望
+              </label>
+              <textarea
+                rows="4"
+                name="message"
+                class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-xl text-white placeholder-purple-300/50 focus:border-pink-400 focus:outline-none transition-all resize-none"
+                placeholder="ご質問やご要望がございましたらご記入ください"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl tracking-wider hover:from-pink-400 hover:to-purple-400 transition-all duration-300 shadow-lg hover:shadow-pink-500/30 hover:scale-[1.02] font-medium"
+            >
+              予約を送信する
+            </button>
+          </form>
         </div>
       </div>
-      
-      <div class="mt-8 pt-8 border-t border-purple-800 text-center">
-        <p class="text-purple-500 text-sm">
-          © 2024 美月 - ボディとハートの癒やし. All rights reserved.
-        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-purple-950 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src="logo.jpg"
+              alt="美月ロゴ"
+              class="w-12 h-12 rounded-full object-cover shadow-lg"
+            />
+            <div>
+              <h1 class="text-lg text-pink-100 tracking-wider">美月</h1>
+              <p class="text-xs text-purple-400">ボディとハートの癒やし</p>
+            </div>
+          </div>
+
+          <div class="flex gap-8 text-purple-300 text-sm font-maru">
+            <a href="#home" class="hover:text-pink-300 transition-colors">
+              ホーム
+            </a>
+            <a href="#services" class="hover:text-pink-300 transition-colors">
+              メニュー
+            </a>
+            <a href="#therapist" class="hover:text-pink-300 transition-colors">
+              セラピスト
+            </a>
+            <a href="#access" class="hover:text-pink-300 transition-colors">
+              アクセス
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-purple-800 text-center">
+          <p class="text-purple-500 text-sm">
+            © 2024 美月 - ボディとハートの癒やし. All rights reserved.
+          </p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script>
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    const navTexts = document.querySelectorAll('.nav-text');
-    const navSubtexts = document.querySelectorAll('.nav-subtext');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('bg-purple-950/95', 'backdrop-blur-md', 'shadow-lg');
-        navbar.classList.remove('bg-transparent');
-        navTexts.forEach(el => {
-          el.classList.remove('text-white');
-          el.classList.add('text-pink-100');
-        });
-        navSubtexts.forEach(el => {
-          el.classList.remove('text-purple-200');
-          el.classList.add('text-purple-300');
-        });
-        navLinks.forEach(el => {
-          el.classList.remove('text-white/90');
-          el.classList.add('text-purple-200');
-        });
-      } else {
-        navbar.classList.remove('bg-purple-950/95', 'backdrop-blur-md', 'shadow-lg');
-        navbar.classList.add('bg-transparent');
-        navTexts.forEach(el => {
-          el.classList.add('text-white');
-          el.classList.remove('text-pink-100');
-        });
-        navSubtexts.forEach(el => {
-          el.classList.add('text-purple-200');
-          el.classList.remove('text-purple-300');
-        });
-        navLinks.forEach(el => {
-          el.classList.add('text-white/90');
-          el.classList.remove('text-purple-200');
-        });
-      }
-    });
+    <script>
+      const navbar = document.getElementById('navbar')
+      const navTexts = document.querySelectorAll('.nav-text')
+      const navSubtexts = document.querySelectorAll('.nav-subtext')
+      const navLinks = document.querySelectorAll('.nav-link')
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add(
+            'bg-purple-950/95',
+            'backdrop-blur-md',
+            'shadow-lg',
+          )
+          navbar.classList.remove('bg-transparent')
+          navTexts.forEach((el) => {
+            el.classList.remove('text-white')
+            el.classList.add('text-pink-100')
+          })
+          navSubtexts.forEach((el) => {
+            el.classList.remove('text-purple-200')
+            el.classList.add('text-purple-300')
+          })
+          navLinks.forEach((el) => {
+            el.classList.remove('text-white/90')
+            el.classList.add('text-purple-200')
+          })
+        } else {
+          navbar.classList.remove(
+            'bg-purple-950/95',
+            'backdrop-blur-md',
+            'shadow-lg',
+          )
+          navbar.classList.add('bg-transparent')
+          navTexts.forEach((el) => {
+            el.classList.add('text-white')
+            el.classList.remove('text-pink-100')
+          })
+          navSubtexts.forEach((el) => {
+            el.classList.add('text-purple-200')
+            el.classList.remove('text-purple-300')
+          })
+          navLinks.forEach((el) => {
+            el.classList.add('text-white/90')
+            el.classList.remove('text-purple-200')
+          })
+        }
+      })
 
-    // Close mobile menu when clicking a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  </script>
-</body>
+      const menuBtn = document.getElementById('menuBtn')
+      const mobileMenu = document.getElementById('mobileMenu')
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden')
+      })
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden')
+        })
+      })
+    </script>
+  </body>
 </html>
